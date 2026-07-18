@@ -1,4 +1,4 @@
-# MRT Digital Twin V6 - Phase 1
+# MRT Pharma Digital Twin
 
 Initial project skeleton.
 
