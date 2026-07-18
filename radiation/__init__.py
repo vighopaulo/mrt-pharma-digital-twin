@@ -1,1 +1,1 @@
-# package
+"""Radiation package for MRT Pharma Digital Twin."""
