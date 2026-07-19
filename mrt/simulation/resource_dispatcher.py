@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
 
+from mrt.simulation.resource_calendar import ResourceCalendar
 from mrt.simulation.resource_pool import ResourcePool, ResourceUnit
 from mrt.simulation.resource_queue import QueueEntry, ResourceQueue
 
@@ -27,6 +28,7 @@ class ResourceDispatcher:
     name: str
     queue: ResourceQueue
     pool: ResourcePool
+    calendar: ResourceCalendar | None = None
     assignments: list[ResourceAssignment] = field(default_factory=list)
 
     def __post_init__(self) -> None:
@@ -39,14 +41,26 @@ class ResourceDispatcher:
             raise TypeError("queue must be a ResourceQueue.")
         if not isinstance(self.pool, ResourcePool):
             raise TypeError("pool must be a ResourcePool.")
+        if self.calendar is not None and not isinstance(
+            self.calendar,
+            ResourceCalendar,
+        ):
+            raise TypeError("calendar must be a ResourceCalendar or None.")
 
     @property
     def active_assignment_count(self) -> int:
         return self.pool.allocated_count
 
+    def is_dispatch_allowed(self, moment: datetime) -> bool:
+        if not isinstance(moment, datetime):
+            raise TypeError("moment must be a datetime.")
+        return self.calendar is None or self.calendar.is_available(moment)
+
     def dispatch_one(self, assigned_at: datetime) -> ResourceAssignment | None:
         if not isinstance(assigned_at, datetime):
             raise TypeError("assigned_at must be a datetime.")
+        if not self.is_dispatch_allowed(assigned_at):
+            return None
         if self.queue.is_empty or not self.pool.has_available:
             return None
 
@@ -68,6 +82,9 @@ class ResourceDispatcher:
         self,
         assigned_at: datetime,
     ) -> tuple[ResourceAssignment, ...]:
+        if not self.is_dispatch_allowed(assigned_at):
+            return ()
+
         dispatched: list[ResourceAssignment] = []
         while not self.queue.is_empty and self.pool.has_available:
             assignment = self.dispatch_one(assigned_at)
@@ -84,6 +101,7 @@ class ResourceDispatcher:
             raise TypeError("resource_unit must be a ResourceUnit.")
         if not isinstance(released_at, datetime):
             raise TypeError("released_at must be a datetime.")
+
         self.pool.release(resource_unit)
         return self.dispatch_one(released_at)
 

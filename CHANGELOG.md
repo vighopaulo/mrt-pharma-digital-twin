@@ -65,3 +65,44 @@
 - Dispatch event generation inside `SimulationEngine`.
 - Multi-resource acquisition.
 - Deadlock prevention and reservation policies.
+
+
+# Build 27.0 — Resource Calendars and Availability
+
+## Added
+
+- `ResourceCalendar` for weekly operating schedules.
+- `DailyOperatingWindow` for regular hours.
+- `AvailabilityWindow` for overrides.
+- Available, unavailable, and maintenance states.
+- Support for after-hours and weekend closure.
+- Support for emergency opening windows.
+- Unit and integration tests for schedule-aware dispatch.
+
+## Deferred
+
+- Calendar-aware dispatch inside `ResourceDispatcher`.
+- Staff shifts and break schedules.
+- Holiday calendars.
+- Recurring maintenance rules.
+
+# Build 28.0 — Calendar-Aware Resource Dispatch
+
+## Added
+
+- Optional `ResourceCalendar` linkage in `ResourceDispatcher`.
+- Dispatch eligibility checks against operating schedules.
+- Automatic blocking during after-hours and maintenance periods.
+- Queue preservation when dispatch is unavailable.
+- Resource release without reassignment during closed periods.
+- Deferred assignment when the calendar reopens.
+- Unit and integration tests for calendar-aware dispatch.
+
+## Deferred
+
+- Automatic next-opening-time calculation.
+- Staff shifts and break schedules.
+- Holiday calendars.
+- Simulation events for opening and closing resources.
+
+
