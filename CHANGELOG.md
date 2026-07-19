@@ -24,3 +24,23 @@
 - Resource queues and contention.
 - Metrics collection and utilization.
 - Pause, resume, and simulation checkpoints.
+
+# Build 25.0 — Resource Queue Management
+
+## Added
+
+- `ResourceQueue` for constrained-resource waiting lines.
+- FIFO and priority queue disciplines.
+- Queue-capacity enforcement.
+- Waiting-time calculation.
+- Maximum queue-length tracking.
+- `ResourcePool` and `ResourceUnit` allocation models.
+- Resource acquisition, exhaustion, and release behavior.
+- Unit and integration tests for queueing and resource assignment.
+
+## Deferred
+
+- Automatic queue-to-resource dispatch events.
+- Resource calendars and availability windows.
+- Queue metrics aggregation and utilization reporting.
+- Multi-resource acquisition and deadlock prevention.
