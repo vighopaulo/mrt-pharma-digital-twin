@@ -185,3 +185,30 @@
 - Preemption and rollback.
 - Simulation-engine deadlock events.
 
+
+# Build 34.0 — Deadlock Victim Selection and Recovery
+
+## Added
+- DeadlockRecoveryPlan model.
+- Victim selection helper.
+- Deterministic recovery strategy foundation.
+- Unit tests.
+
+## Deferred
+- Cost-based victim scoring.
+- Rollback execution.
+- Automatic simulation recovery.
+
+# Build 35.0 — Automatic Rollback and Resource Recovery
+
+## Added
+- RollbackManager.
+- RollbackAction model.
+- Automatic rollback foundation for deadlock recovery.
+- Unit tests.
+
+## Deferred
+- SimulationEngine integration.
+- Transaction checkpoints.
+- Partial rollback optimization.
+
