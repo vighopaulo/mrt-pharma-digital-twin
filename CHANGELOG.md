@@ -143,3 +143,22 @@
 - Reservation timeouts.
 - Calendar-aware multi-resource allocation.
 - Simulation-engine events for pending requests.
+
+# Build 32.0 — Deadlock Detection and Reservation Timeouts
+
+## Added
+
+- `ResourceReservation` with timeout and status tracking.
+- `ReservationManager` for creation, allocation, expiration, and release.
+- Pending-request removal when reservations expire.
+- `DeadlockRisk` reporting for blocked requests.
+- Deadlock-risk detection across pending multi-resource requests.
+- Integration between timeout expiration and deadlock-risk clearing.
+- Unit and integration tests.
+
+## Deferred
+
+- Cyclic wait-for graph detection.
+- Automatic timeout events in `SimulationEngine`.
+- Reservation renewal.
+- Preemption and priority escalation.
