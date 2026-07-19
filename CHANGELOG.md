@@ -1,10 +1,10 @@
-# Build 4.0 — Floor Entity
+# Build 5.0 — Room Entity
 
 ## Added
 
-- Initial `Floor` domain entity.
+- Initial `Room` domain entity.
 - UUID-based entity identity.
-- Integer level validation.
-- Optional normalized floor name.
-- Deterministic display labels for ground, upper, and basement levels.
+- Required normalized room name.
+- Optional normalized room type.
+- User-facing room display label.
 - Unit tests for identity, validation, normalization, and display behavior.
