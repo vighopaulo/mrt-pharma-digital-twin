@@ -162,3 +162,26 @@
 - Automatic timeout events in `SimulationEngine`.
 - Reservation renewal.
 - Preemption and priority escalation.
+
+
+
+# Build 33.0 — Cyclic Wait-for Graph Detection
+
+## Added
+
+- `WaitForGraph` directed wait-dependency model.
+- Wait-edge addition and removal.
+- Node removal and graph inspection.
+- Depth-first cycle detection.
+- Canonical duplicate-cycle suppression.
+- `WaitForCycle` and `CyclicDeadlock` records.
+- Integration with deadlock detection helpers.
+- Unit and integration tests.
+
+## Deferred
+
+- Automatic graph construction from active allocations.
+- Deadlock victim selection.
+- Preemption and rollback.
+- Simulation-engine deadlock events.
+
