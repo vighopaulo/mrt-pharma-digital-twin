@@ -21,13 +21,13 @@ class SimulationEngine(SimulationEngineStateMixin):
 
     def _export_engine_metadata(self) -> dict:
         return {
-            "processed_event_count": self._processed_event_count,
+            "processed_event_count": self.processed_event_count,
             "is_running": self.is_running,
         }
 
     def _import_engine_metadata(self, metadata: dict) -> None:
         super()._import_engine_metadata(metadata)
-        self._processed_event_count = metadata["processed_event_count"]
+        self.processed_event_count = metadata["processed_event_count"]
         self.is_running = metadata["is_running"]
 
     def register_handler(self, event_type: str, handler: EventHandler) -> None:
