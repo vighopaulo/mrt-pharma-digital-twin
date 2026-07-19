@@ -1,19 +1,19 @@
-# Build 13.0 — Clinical Workflow Entity
+# Build 14.0 — Radiopharmaceutical Prescription Entity
 
 ## Added
 
-- Initial `ClinicalWorkflow` domain entity.
-- Direct linkage from a workflow to a `ClinicalCase`.
-- Ordered ownership of `WorkflowStep` entities.
-- Duplicate-sequence protection and deterministic step ordering.
-- Planned-duration aggregation across all workflow steps.
-- Controlled draft, ready, in-progress, completed, and cancelled states.
-- Sequential workflow execution with automatic activation of the next step.
-- Unit and integration tests for ordering, validation, execution, duration, and case-workflow coordination.
+- Initial `RadiopharmaceuticalPrescription` domain entity.
+- Direct linkage to a `TreatmentPlan` and its patient.
+- Prescribed radiopharmaceutical name and activity in MBq.
+- Derived activity conversion to GBq.
+- Calibration timestamp and administration route.
+- Draft, approved, prepared, administered, and cancelled lifecycle states.
+- Controlled approve, prepare, administer, and cancel operations.
+- Unit tests for identity, validation, linkage, activity conversion, display behavior, and lifecycle transitions.
 
 ## Deferred
 
-- Simulation timestamps and event generation.
-- Stochastic durations.
-- Resource contention and queueing.
-- Workflow branching and parallel activities.
+- Radionuclide physical-decay calculations.
+- Production batches and dispensing.
+- Dose assay and residual-activity measurements.
+- Transport requests and chain of custody.
