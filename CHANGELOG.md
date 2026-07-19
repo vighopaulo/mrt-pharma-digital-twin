@@ -1,19 +1,18 @@
-# Build 14.0 — Radiopharmaceutical Prescription Entity
+# Build 15.0 — Radionuclide Entity and Decay Model
 
 ## Added
 
-- Initial `RadiopharmaceuticalPrescription` domain entity.
-- Direct linkage to a `TreatmentPlan` and its patient.
-- Prescribed radiopharmaceutical name and activity in MBq.
-- Derived activity conversion to GBq.
-- Calibration timestamp and administration route.
-- Draft, approved, prepared, administered, and cancelled lifecycle states.
-- Controlled approve, prepare, administer, and cancel operations.
-- Unit tests for identity, validation, linkage, activity conversion, display behavior, and lifecycle transitions.
+- Immutable `Radionuclide` radiation-domain entity.
+- Radionuclide symbol, name, and half-life in minutes.
+- Radioactive decay constant calculation.
+- Remaining-activity fraction after elapsed time.
+- Remaining activity calculation in MBq.
+- Inverse calculation for time required to reach a target fraction.
+- Unit tests for half-life behavior, activity decay, validation, immutability, and display formatting.
 
 ## Deferred
 
-- Radionuclide physical-decay calculations.
-- Production batches and dispensing.
-- Dose assay and residual-activity measurements.
-- Transport requests and chain of custody.
+- Standard radionuclide knowledge library.
+- Linkage from prescriptions to radionuclide objects.
+- Decay during production, dispensing, transport, and patient workflow.
+- Daughter products and multi-stage decay chains.
