@@ -334,3 +334,11 @@ after adapting the attribute names if the engine does not use
 - Added graceful engine-initialization error handling.
 - Added engine-adapter unit tests.
 
+
+## Build 43 — Live Event Queue Monitor
+
+- Added a read-only live event queue panel to the Streamlit dashboard.
+- Normalized pending events from common queue and event representations.
+- Displayed event position, scheduled time, priority, event type, and related entity.
+- Added queue-monitor unit tests.
+
