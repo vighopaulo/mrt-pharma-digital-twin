@@ -1,18 +1,19 @@
-# Build 15.0 — Radionuclide Entity and Decay Model
+# Build 16.0 — Radiopharmaceutical Batch Entity
 
 ## Added
 
-- Immutable `Radionuclide` radiation-domain entity.
-- Radionuclide symbol, name, and half-life in minutes.
-- Radioactive decay constant calculation.
-- Remaining-activity fraction after elapsed time.
-- Remaining activity calculation in MBq.
-- Inverse calculation for time required to reach a target fraction.
-- Unit tests for half-life behavior, activity decay, validation, immutability, and display formatting.
+- Initial `RadiopharmaceuticalBatch` radiation-domain entity.
+- UUID-based batch identity and normalized batch number.
+- Direct linkage to a `Radionuclide`.
+- Product name, produced time, calibration time, and optional expiry time.
+- Calibrated initial activity in MBq.
+- Remaining activity and remaining-fraction calculations at a requested time.
+- Created, released, depleted, expired, and cancelled lifecycle states.
+- Unit tests for identity, validation, decay integration, expiration, display behavior, and lifecycle transitions.
 
 ## Deferred
 
-- Standard radionuclide knowledge library.
-- Linkage from prescriptions to radionuclide objects.
-- Decay during production, dispensing, transport, and patient workflow.
-- Daughter products and multi-stage decay chains.
+- Production equipment and cyclotron linkage.
+- Quality-control records and release criteria.
+- Dose dispensing and inventory deductions.
+- Transport requests and chain of custody.
