@@ -1,20 +1,19 @@
-# Build 21.0 — Simulation Clock and Event Queue
+# Build 22.0 — Simulation Engine Loop and Event Handlers
 
 ## Added
 
-- Initial `SimulationEvent` entity.
-- Deterministic event ordering by time, priority, and insertion order.
-- Event payload support for simulation data.
-- Scheduled, executed, and cancelled event states.
-- Initial `SimulationEventQueue` priority queue.
-- Event scheduling, peeking, cancellation, and chronological execution.
-- Initial `SimulationClock` with forward-only time advancement.
-- Unit tests for event validation, deterministic ordering, cancellation, execution, and clock behavior.
+- Initial `SimulationEngine`.
+- Event-handler registration.
+- Deterministic `step()` execution.
+- Continuous `run()` execution.
+- Optional end-time and maximum-event limits.
+- Automatic simulation-clock advancement.
+- Follow-up event scheduling from handlers.
+- Unit and integration tests for event execution and chaining.
 
 ## Deferred
 
-- Event handlers and simulation engine loop.
-- Metrics collection.
 - Random variate generation.
-- Resource queues and utilization tracking.
-- Pause, resume, and simulation checkpoints.
+- Resource queues and contention.
+- Metrics collection.
+- Pause, resume, and checkpoints.
