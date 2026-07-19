@@ -105,4 +105,22 @@
 - Holiday calendars.
 - Simulation events for opening and closing resources.
 
+# Build 29.0 — Next Availability and Reopening Events
+
+## Added
+
+- `ResourceCalendar.next_available_at()` calculation.
+- Search across future operating days.
+- Weekend and after-hours reopening logic.
+- Emergency availability override support.
+- `ResourceReopening` value object.
+- Reopening calculation helper.
+- Unit and integration tests for delayed dispatch at reopening.
+
+## Deferred
+
+- Automatic scheduling of reopening events in `SimulationEngine`.
+- Holiday calendars.
+- Recurring maintenance rules.
+- Time-zone-aware resource calendars.
 

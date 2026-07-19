@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import date, datetime, time
+from datetime import date, datetime, time, timedelta
 from enum import StrEnum
 
 
@@ -58,7 +58,9 @@ class DailyOperatingWindow:
 @dataclass(slots=True)
 class ResourceCalendar:
     name: str
-    weekly_schedule: dict[int, tuple[DailyOperatingWindow, ...]] = field(default_factory=dict)
+    weekly_schedule: dict[int, tuple[DailyOperatingWindow, ...]] = field(
+        default_factory=dict
+    )
     overrides: list[AvailabilityWindow] = field(default_factory=list)
 
     def __post_init__(self) -> None:
@@ -67,6 +69,8 @@ class ResourceCalendar:
         self.name = self.name.strip()
         if not self.name:
             raise ValueError("name cannot be empty.")
+
+        normalized: dict[int, tuple[DailyOperatingWindow, ...]] = {}
         for weekday, windows in self.weekly_schedule.items():
             if isinstance(weekday, bool) or not isinstance(weekday, int):
                 raise TypeError("weekday keys must be integers.")
@@ -76,6 +80,11 @@ class ResourceCalendar:
                 raise TypeError("weekly schedule values must be tuples.")
             if not all(isinstance(window, DailyOperatingWindow) for window in windows):
                 raise TypeError("all windows must be DailyOperatingWindow.")
+            normalized[weekday] = tuple(
+                sorted(windows, key=lambda window: window.start_time)
+            )
+        self.weekly_schedule = normalized
+
         if not all(isinstance(item, AvailabilityWindow) for item in self.overrides):
             raise TypeError("all overrides must be AvailabilityWindow instances.")
 
@@ -88,12 +97,15 @@ class ResourceCalendar:
     def status_at(self, moment: datetime) -> AvailabilityStatus:
         if not isinstance(moment, datetime):
             raise TypeError("moment must be a datetime.")
-        matches = [window for window in self.overrides if window.contains(moment)]
-        if matches:
-            return matches[-1].status
+
+        matching = [window for window in self.overrides if window.contains(moment)]
+        if matching:
+            return matching[-1].status
+
         for window in self.weekly_schedule.get(moment.weekday(), ()):
             if window.contains(moment):
                 return AvailabilityStatus.AVAILABLE
+
         return AvailabilityStatus.UNAVAILABLE
 
     def is_available(self, moment: datetime) -> bool:
@@ -103,3 +115,41 @@ class ResourceCalendar:
         if not isinstance(day, date):
             raise TypeError("day must be a date.")
         return bool(self.weekly_schedule.get(day.weekday(), ()))
+
+    def next_available_at(
+        self,
+        moment: datetime,
+        search_days: int = 14,
+    ) -> datetime | None:
+        if not isinstance(moment, datetime):
+            raise TypeError("moment must be a datetime.")
+        if isinstance(search_days, bool) or not isinstance(search_days, int):
+            raise TypeError("search_days must be an integer.")
+        if search_days < 0:
+            raise ValueError("search_days cannot be negative.")
+
+        if self.is_available(moment):
+            return moment
+
+        candidates: list[datetime] = []
+
+        for override in self.overrides:
+            if (
+                override.status == AvailabilityStatus.AVAILABLE
+                and override.end_at > moment
+            ):
+                candidate = max(moment, override.start_at)
+                if self.is_available(candidate):
+                    candidates.append(candidate)
+
+        start_day = moment.date()
+        for offset in range(search_days + 1):
+            current_day = start_day + timedelta(days=offset)
+            for window in self.weekly_schedule.get(current_day.weekday(), ()):
+                candidate = datetime.combine(current_day, window.start_time)
+                if candidate < moment:
+                    continue
+                if self.is_available(candidate):
+                    candidates.append(candidate)
+
+        return min(candidates) if candidates else None
