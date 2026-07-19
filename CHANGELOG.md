@@ -269,3 +269,30 @@
 - Transaction-aware event-loop execution.
 - Persistent transaction audit logging.
 
+
+# Build 39.0 — Native SimulationEngine State Export and Import
+
+## Added
+
+- `EngineState` snapshot model.
+- Deep-copy state serialization.
+- Required-field validation during restoration.
+- `SimulationEngineStateMixin`.
+- Native `export_state()` behavior.
+- Native `import_state()` behavior.
+- Extension hooks for engine-specific metadata.
+- Unit and integration tests.
+
+## Integration Note
+
+Add `SimulationEngineStateMixin` as a base class of the existing
+`SimulationEngine`, or copy its export/import methods into the engine
+after adapting the attribute names if the engine does not use
+`clock` and `event_queue`.
+
+## Deferred
+
+- JSON snapshot persistence.
+- Snapshot schema versioning.
+- Persistent restart files.
+- Incremental snapshots.

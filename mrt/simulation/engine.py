@@ -5,16 +5,30 @@ from datetime import datetime
 from mrt.simulation.clock import SimulationClock
 from mrt.simulation.event import SimulationEvent
 from mrt.simulation.event_queue import SimulationEventQueue
+from mrt.simulation.simulation_engine_state import (
+    SimulationEngineStateMixin,
+)
 
 EventHandler = Callable[[SimulationEvent, "SimulationEngine"], None]
 
 @dataclass(slots=True)
-class SimulationEngine:
+class SimulationEngine(SimulationEngineStateMixin):
     clock: SimulationClock
     event_queue: SimulationEventQueue = field(default_factory=SimulationEventQueue)
     _handlers: dict[str, EventHandler] = field(default_factory=dict, init=False, repr=False)
     processed_event_count: int = field(default=0, init=False)
     is_running: bool = field(default=False, init=False)
+
+    def _export_engine_metadata(self) -> dict:
+        return {
+            "processed_event_count": self._processed_event_count,
+            "is_running": self.is_running,
+        }
+
+    def _import_engine_metadata(self, metadata: dict) -> None:
+        super()._import_engine_metadata(metadata)
+        self._processed_event_count = metadata["processed_event_count"]
+        self.is_running = metadata["is_running"]
 
     def register_handler(self, event_type: str, handler: EventHandler) -> None:
         event_type = event_type.strip()
