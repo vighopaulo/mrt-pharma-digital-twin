@@ -296,3 +296,23 @@ after adapting the attribute names if the engine does not use
 - Snapshot schema versioning.
 - Persistent restart files.
 - Incremental snapshots.
+
+# Build 40.0 — Automatic Simulation Snapshots
+
+## Added
+
+- `SimulationSnapshot` immutable snapshot model.
+- `SimulationSnapshotManager`.
+- Configurable snapshot intervals.
+- Automatic snapshot capture when a trigger value is due.
+- Duplicate-trigger protection.
+- Configurable retention policy.
+- Latest-snapshot access.
+- Unit and integration tests.
+
+## Deferred
+
+- Persistent JSON snapshot files.
+- Automatic hooks inside `SimulationEngine.run()`.
+- Snapshot restore and resume.
+- Snapshot schema migration.
