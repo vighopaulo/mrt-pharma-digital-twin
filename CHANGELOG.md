@@ -124,3 +124,22 @@
 - Recurring maintenance rules.
 - Time-zone-aware resource calendars.
 
+# Build 31.0 — Multi-Resource Scheduling and Contention Resolution
+
+## Added
+
+- `ResourceRequirement` for named resource quantities.
+- `MultiResourceRequest` for atomic multi-resource demand.
+- `MultiResourceAllocation` for traceable grouped allocation.
+- `MultiResourceScheduler` for all-or-nothing acquisition.
+- Priority-aware pending request ordering.
+- Contention handling without partial allocation.
+- Resource release across all allocated pools.
+- Unit and integration tests.
+
+## Deferred
+
+- Deadlock detection across competing reservations.
+- Reservation timeouts.
+- Calendar-aware multi-resource allocation.
+- Simulation-engine events for pending requests.
