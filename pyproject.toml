@@ -15,7 +15,7 @@ dev = ["pytest>=8.0", "pytest-cov>=5.0", "mypy>=1.10", "ruff>=0.5"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["core*", "economics*", "optimization*", "radiation*", "reporting*", "simulation*", "ui*"]
+include = ["mrt*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
