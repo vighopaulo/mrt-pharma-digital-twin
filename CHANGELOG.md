@@ -324,3 +324,13 @@ after adapting the attribute names if the engine does not use
 - Added reusable dashboard, layout, and sidebar modules.
 - Added placeholder simulation KPIs and disabled controls for Build 42 integration.
 - Added UI import tests.
+
+
+## Build 42 — Live Simulation Engine Integration
+
+- Connected the Streamlit application to the project SimulationEngine.
+- Added a read-only engine adapter for status, simulation time, processed events, and queue size.
+- Stored the engine in Streamlit session state.
+- Added graceful engine-initialization error handling.
+- Added engine-adapter unit tests.
+
