@@ -247,3 +247,25 @@
 - Persistent recovery journals.
 
 
+
+# Build 38.0 — SimulationEngine Transaction Integration
+
+## Added
+
+- `SupportsSimulationState` protocol.
+- `TransactionalSimulationEngine` wrapper.
+- Transaction-aware operation execution.
+- Automatic checkpoint creation before execution.
+- Commit on successful completion.
+- Engine-state restoration after failed operations.
+- Optional exception propagation after rollback.
+- Structured `TransactionExecutionResult`.
+- Unit and integration tests.
+
+## Deferred
+
+- Native `SimulationEngine.export_state()` implementation.
+- Native `SimulationEngine.import_state()` implementation.
+- Transaction-aware event-loop execution.
+- Persistent transaction audit logging.
+
