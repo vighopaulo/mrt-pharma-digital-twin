@@ -1,11 +1,11 @@
-# Build 7.0 — Entity Relationships
+# Build 8.0 — Staff Entity
 
 ## Added
 
-- Building ownership of ordered `Floor` entities.
-- Floor ownership of `Room` entities.
-- Room ownership of `Equipment` entities.
-- Add, get, remove, count, and ownership-management operations.
-- Duplicate-level and duplicate-name protection.
-- Prevention of assigning one child entity to multiple parents.
-- Complete Building → Floor → Room → Equipment integration test.
+- Initial `Staff` domain entity.
+- UUID-based staff identity.
+- Required staff name and role.
+- Optional department and email metadata.
+- Active and inactive employment state.
+- User-facing staff display label.
+- Unit tests for identity, validation, normalization, display behavior, and state changes.
