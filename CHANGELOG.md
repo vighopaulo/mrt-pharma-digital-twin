@@ -1,12 +1,12 @@
-# Build 9.0 — Patient Entity
+# Build 10.0 — Treatment Plan Entity
 
 ## Added
 
-- Initial `Patient` domain entity.
-- UUID-based patient identity.
-- Required internal patient reference and patient name.
-- Optional date-of-birth and sex metadata.
-- Active and inactive patient-record state.
-- User-facing patient display label.
-- Age calculation for a supplied reference date.
-- Unit tests for identity, validation, normalization, display behavior, age calculation, and state changes.
+- Initial `TreatmentPlan` domain entity.
+- UUID-based treatment-plan identity.
+- Direct linkage from a treatment plan to a `Patient`.
+- Required treatment name with optional scheduling and notes metadata.
+- Explicit treatment-plan lifecycle states.
+- Controlled schedule, start, complete, and cancel operations.
+- User-facing treatment-plan display label.
+- Unit tests for identity, validation, patient linkage, scheduling, display behavior, and lifecycle transitions.
