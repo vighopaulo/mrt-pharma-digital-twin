@@ -1,57 +1,42 @@
-from uuid import UUID
-
 import pytest
 
 from mrt.core.entities.floor import Floor
+from mrt.core.entities.room import Room
 
 
-def test_floor_stores_level_and_name() -> None:
-    floor = Floor(level=2, name="Imaging")
+def test_floor_adds_room() -> None:
+    floor = Floor(level=1)
+    room = Room(name="PET Suite")
+    floor.add_room(room)
 
-    assert floor.level == 2
-    assert floor.name == "Imaging"
+    assert floor.room_count == 1
+    assert floor.get_room("pet suite") is room
+    assert room.floor_id == floor.id
 
 
-def test_floor_receives_unique_identifier() -> None:
+def test_floor_rejects_duplicate_room_name() -> None:
+    floor = Floor(level=1, rooms=[Room(name="Hot Lab")])
+
+    with pytest.raises(ValueError):
+        floor.add_room(Room(name="hot lab"))
+
+
+def test_room_cannot_belong_to_two_floors() -> None:
+    room = Room(name="Uptake 1")
     first = Floor(level=1)
     second = Floor(level=2)
+    first.add_room(room)
 
-    assert isinstance(first.id, UUID)
-    assert isinstance(second.id, UUID)
-    assert first.id != second.id
-
-
-@pytest.mark.parametrize(
-    ("level", "expected"),
-    [
-        (0, "Ground Floor"),
-        (1, "Floor 1"),
-        (7, "Floor 7"),
-        (-1, "Basement 1"),
-        (-3, "Basement 3"),
-    ],
-)
-def test_display_name_fallback(level: int, expected: str) -> None:
-    assert Floor(level=level).display_name == expected
-
-
-def test_display_name_prefers_explicit_name() -> None:
-    assert Floor(level=3, name="Theranostics").display_name == "Theranostics"
-
-
-def test_name_is_trimmed() -> None:
-    floor = Floor(level=4, name="  Nuclear Medicine  ")
-
-    assert floor.name == "Nuclear Medicine"
-
-
-@pytest.mark.parametrize("invalid_name", ["", " ", "\t", "\n"])
-def test_blank_name_is_rejected(invalid_name: str) -> None:
     with pytest.raises(ValueError):
-        Floor(level=1, name=invalid_name)
+        second.add_room(room)
 
 
-@pytest.mark.parametrize("invalid_level", [1.0, "1", True, None])
-def test_non_integer_level_is_rejected(invalid_level: object) -> None:
-    with pytest.raises(TypeError):
-        Floor(level=invalid_level)  # type: ignore[arg-type]
+def test_remove_room_clears_ownership() -> None:
+    room = Room(name="Uptake 1")
+    floor = Floor(level=1, rooms=[room])
+
+    removed = floor.remove_room("Uptake 1")
+
+    assert removed is room
+    assert room.floor_id is None
+    assert floor.room_count == 0

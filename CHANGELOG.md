@@ -1,11 +1,11 @@
-# Build 6.0 — Equipment Entity
+# Build 7.0 — Entity Relationships
 
 ## Added
 
-- Initial `Equipment` domain entity.
-- UUID-based equipment identity.
-- Required equipment name and equipment type.
-- Optional manufacturer and model metadata.
-- Active and inactive operating state.
-- User-facing equipment display label.
-- Unit tests for identity, validation, normalization, display behavior, and state changes.
+- Building ownership of ordered `Floor` entities.
+- Floor ownership of `Room` entities.
+- Room ownership of `Equipment` entities.
+- Add, get, remove, count, and ownership-management operations.
+- Duplicate-level and duplicate-name protection.
+- Prevention of assigning one child entity to multiple parents.
+- Complete Building → Floor → Room → Equipment integration test.

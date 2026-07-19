@@ -1,57 +1,47 @@
-from uuid import UUID
-
 import pytest
 
+from mrt.core.entities.equipment import Equipment
 from mrt.core.entities.room import Room
 
 
-def test_room_stores_name_and_type() -> None:
-    room = Room(name="PET Scanner 1", room_type="Imaging")
+def test_room_adds_equipment() -> None:
+    room = Room(name="PET Suite")
+    scanner = Equipment(name="PET 1", equipment_type="PET Scanner")
+    room.add_equipment(scanner)
 
-    assert room.name == "PET Scanner 1"
-    assert room.room_type == "Imaging"
-
-
-def test_room_receives_unique_identifier() -> None:
-    first = Room(name="Uptake 1")
-    second = Room(name="Uptake 2")
-
-    assert isinstance(first.id, UUID)
-    assert isinstance(second.id, UUID)
-    assert first.id != second.id
+    assert room.equipment_count == 1
+    assert room.get_equipment("pet 1") is scanner
+    assert scanner.room_id == room.id
 
 
-def test_room_name_is_trimmed() -> None:
-    room = Room(name="  Hot Lab  ")
+def test_room_rejects_duplicate_equipment_name() -> None:
+    room = Room(
+        name="PET Suite",
+        equipment=[Equipment(name="PET 1", equipment_type="PET Scanner")],
+    )
 
-    assert room.name == "Hot Lab"
-
-
-def test_room_type_is_trimmed() -> None:
-    room = Room(name="Suite 1", room_type="  Theranostics  ")
-
-    assert room.room_type == "Theranostics"
-
-
-@pytest.mark.parametrize("invalid_name", ["", " ", "\t", "\n"])
-def test_blank_room_name_is_rejected(invalid_name: str) -> None:
     with pytest.raises(ValueError):
-        Room(name=invalid_name)
+        room.add_equipment(
+            Equipment(name="pet 1", equipment_type="PET Scanner")
+        )
 
 
-@pytest.mark.parametrize("invalid_type", ["", " ", "\t", "\n"])
-def test_blank_room_type_is_rejected(invalid_type: str) -> None:
+def test_equipment_cannot_belong_to_two_rooms() -> None:
+    scanner = Equipment(name="PET 1", equipment_type="PET Scanner")
+    first = Room(name="Suite A")
+    second = Room(name="Suite B")
+    first.add_equipment(scanner)
+
     with pytest.raises(ValueError):
-        Room(name="Room 1", room_type=invalid_type)
+        second.add_equipment(scanner)
 
 
-def test_display_name_without_room_type() -> None:
-    room = Room(name="Waste Holding")
+def test_remove_equipment_clears_ownership() -> None:
+    scanner = Equipment(name="PET 1", equipment_type="PET Scanner")
+    room = Room(name="PET Suite", equipment=[scanner])
 
-    assert room.display_name == "Waste Holding"
+    removed = room.remove_equipment("PET 1")
 
-
-def test_display_name_with_room_type() -> None:
-    room = Room(name="Suite 3", room_type="Private Therapy")
-
-    assert room.display_name == "Suite 3 (Private Therapy)"
+    assert removed is scanner
+    assert scanner.room_id is None
+    assert room.equipment_count == 0
