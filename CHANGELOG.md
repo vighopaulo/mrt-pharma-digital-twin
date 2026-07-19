@@ -1,20 +1,21 @@
-# Build 18.0 — Transport Request Entity
+# Build 19.0 — Transport Route Entity
 
 ## Added
 
-- Initial `TransportRequest` domain entity.
-- Direct linkage to a patient-specific radiopharmaceutical dose.
-- Origin room, destination room, requested time, and priority.
-- Manual, pneumatic, and MRT transport modes.
-- Created, dispatched, in-transit, delivered, and cancelled lifecycle states.
-- Dispatch and delivery timestamps with completed transport-duration calculation.
-- Coordination of dose state with transport-request state.
-- Unit tests for linkage, validation, timing, display behavior, and lifecycle transitions.
+- Initial `TransportRoute` domain entity.
+- UUID-based route identity.
+- Directed or bidirectional connection between two rooms.
+- Route distance and nominal operating speed.
+- Nominal travel-time calculation in seconds and minutes.
+- Manual, pneumatic, and MRT route modes.
+- Active, inactive, and maintenance availability states.
+- Directional connectivity and transport-mode compatibility checks.
+- Unit tests for identity, validation, timing, directionality, display behavior, and availability.
 
 ## Deferred
 
-- Route and guideway selection.
-- Travel-time prediction.
-- Carrier assignment and fleet capacity.
-- Chain-of-custody event history.
-- Transport-related decay and radiation exposure.
+- Multi-segment route networks.
+- Graph-based shortest-path routing.
+- Junctions, elevators, and vertical transitions.
+- Congestion and dynamic travel times.
+- Carrier assignment and route reservations.
