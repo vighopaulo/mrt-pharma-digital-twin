@@ -1,19 +1,20 @@
-# Build 17.0 — Radiopharmaceutical Dose Entity
+# Build 18.0 — Transport Request Entity
 
 ## Added
 
-- Initial `RadiopharmaceuticalDose` radiation-domain entity.
-- UUID-based patient-dose identity and normalized dose reference.
-- Direct linkage to a `RadiopharmaceuticalPrescription`, patient, and production batch.
-- Dispensed activity and dispensing timestamp.
-- Validation that dispensed activity does not exceed batch activity available at dispensing.
-- Remaining patient-dose activity calculation after dispensing.
-- Dispensed, released, in-transit, received, administered, and cancelled lifecycle states.
-- Unit tests for linkage, validation, dose decay, display behavior, and lifecycle transitions.
+- Initial `TransportRequest` domain entity.
+- Direct linkage to a patient-specific radiopharmaceutical dose.
+- Origin room, destination room, requested time, and priority.
+- Manual, pneumatic, and MRT transport modes.
+- Created, dispatched, in-transit, delivered, and cancelled lifecycle states.
+- Dispatch and delivery timestamps with completed transport-duration calculation.
+- Coordination of dose state with transport-request state.
+- Unit tests for linkage, validation, timing, display behavior, and lifecycle transitions.
 
 ## Deferred
 
-- Batch inventory deductions.
-- Dose assay and residual-activity measurements.
-- Transport request linkage and chain-of-custody events.
-- Radiation exposure calculations.
+- Route and guideway selection.
+- Travel-time prediction.
+- Carrier assignment and fleet capacity.
+- Chain-of-custody event history.
+- Transport-related decay and radiation exposure.
