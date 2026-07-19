@@ -227,3 +227,23 @@
 - Persistent checkpoint storage.
 
 
+# Build 37.0 — Simulation Transactions and Commit/Rollback Integration
+
+## Added
+
+- `TransactionStatus` lifecycle model.
+- `SimulationTransaction` coordination layer.
+- Transaction checkpoint creation.
+- Explicit commit behavior.
+- Integrated state restoration and resource rollback.
+- Protection against invalid post-commit or post-rollback operations.
+- Unit and integration tests.
+
+## Deferred
+
+- Automatic transaction creation inside `SimulationEngine`.
+- Nested transactions.
+- Transaction event logging.
+- Persistent recovery journals.
+
+
