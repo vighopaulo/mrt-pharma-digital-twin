@@ -1,11 +1,18 @@
-import streamlit as st
+"""Streamlit entry point for the MRT Pharma Digital Twin."""
 
-st.set_page_config(page_title="MRT Pharma V6", layout="wide")
+from ui.dashboard import render_dashboard
+from ui.layout import configure_page
+from ui.sidebar import render_sidebar
 
-st.title("🚀 MRT Pharma Digital Twin")
 
-st.success("Streamlit deployment is working.")
+def main() -> None:
+    """Run the Streamlit application."""
+    configure_page()
+    selected_page = render_sidebar()
 
-st.write("If you can see this page, the deployment is correctly configured.")
+    if selected_page == "Dashboard":
+        render_dashboard()
 
-st.info("Next step: connect the Digital Twin simulation engine.")
+
+if __name__ == "__main__":
+    main()

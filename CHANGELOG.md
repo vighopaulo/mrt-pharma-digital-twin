@@ -316,3 +316,11 @@ after adapting the attribute names if the engine does not use
 - Automatic hooks inside `SimulationEngine.run()`.
 - Snapshot restore and resume.
 - Snapshot schema migration.
+
+
+## Build 41 — Interactive Simulation Dashboard Foundation
+
+- Replaced the temporary Streamlit smoke test with the initial MRT Pharma Digital Twin dashboard.
+- Added reusable dashboard, layout, and sidebar modules.
+- Added placeholder simulation KPIs and disabled controls for Build 42 integration.
+- Added UI import tests.
