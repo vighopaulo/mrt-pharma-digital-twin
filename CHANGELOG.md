@@ -1,19 +1,19 @@
-# Build 16.0 — Radiopharmaceutical Batch Entity
+# Build 17.0 — Radiopharmaceutical Dose Entity
 
 ## Added
 
-- Initial `RadiopharmaceuticalBatch` radiation-domain entity.
-- UUID-based batch identity and normalized batch number.
-- Direct linkage to a `Radionuclide`.
-- Product name, produced time, calibration time, and optional expiry time.
-- Calibrated initial activity in MBq.
-- Remaining activity and remaining-fraction calculations at a requested time.
-- Created, released, depleted, expired, and cancelled lifecycle states.
-- Unit tests for identity, validation, decay integration, expiration, display behavior, and lifecycle transitions.
+- Initial `RadiopharmaceuticalDose` radiation-domain entity.
+- UUID-based patient-dose identity and normalized dose reference.
+- Direct linkage to a `RadiopharmaceuticalPrescription`, patient, and production batch.
+- Dispensed activity and dispensing timestamp.
+- Validation that dispensed activity does not exceed batch activity available at dispensing.
+- Remaining patient-dose activity calculation after dispensing.
+- Dispensed, released, in-transit, received, administered, and cancelled lifecycle states.
+- Unit tests for linkage, validation, dose decay, display behavior, and lifecycle transitions.
 
 ## Deferred
 
-- Production equipment and cyclotron linkage.
-- Quality-control records and release criteria.
-- Dose dispensing and inventory deductions.
-- Transport requests and chain of custody.
+- Batch inventory deductions.
+- Dose assay and residual-activity measurements.
+- Transport request linkage and chain-of-custody events.
+- Radiation exposure calculations.
