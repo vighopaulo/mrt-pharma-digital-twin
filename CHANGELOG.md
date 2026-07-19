@@ -1,21 +1,20 @@
-# Build 20.0 — Transport Network and Path Finding
+# Build 21.0 — Simulation Clock and Event Queue
 
 ## Added
 
-- Initial `TransportNetwork` graph entity.
-- Ownership and management of `TransportRoute` entities.
-- Immutable `TransportPath` result object.
-- Active-route traversal with optional transport-mode filtering.
-- Multi-segment path finding using Dijkstra's algorithm.
-- Distance-minimizing and travel-time-minimizing route selection.
-- Bidirectional-route traversal.
-- Aggregated route count, room sequence, total distance, and nominal travel time.
-- Unit and integration tests for routing, filtering, inactive routes, directionality, and transport-request compatibility.
+- Initial `SimulationEvent` entity.
+- Deterministic event ordering by time, priority, and insertion order.
+- Event payload support for simulation data.
+- Scheduled, executed, and cancelled event states.
+- Initial `SimulationEventQueue` priority queue.
+- Event scheduling, peeking, cancellation, and chronological execution.
+- Initial `SimulationClock` with forward-only time advancement.
+- Unit tests for event validation, deterministic ordering, cancellation, execution, and clock behavior.
 
 ## Deferred
 
-- Congestion and dynamic route weights.
-- Guideway capacity and route reservations.
-- Elevators, junction controls, and transfer penalties.
-- Carrier assignment and fleet dispatch.
-- Real-time rerouting.
+- Event handlers and simulation engine loop.
+- Metrics collection.
+- Random variate generation.
+- Resource queues and utilization tracking.
+- Pause, resume, and simulation checkpoints.
