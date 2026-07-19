@@ -212,3 +212,18 @@
 - Transaction checkpoints.
 - Partial rollback optimization.
 
+# Build 36.0 — Transaction Checkpoints and State Recovery
+
+## Added
+- Checkpoint model.
+- CheckpointManager.
+- Snapshot creation using deep copies.
+- State restoration support.
+- Unit tests.
+
+## Deferred
+- SimulationEngine integration.
+- Incremental checkpoints.
+- Persistent checkpoint storage.
+
+
