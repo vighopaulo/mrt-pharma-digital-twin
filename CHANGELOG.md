@@ -342,3 +342,8 @@ after adapting the attribute names if the engine does not use
 - Displayed event position, scheduled time, priority, event type, and related entity.
 - Added queue-monitor unit tests.
 
+## Build 44: Live Resource Monitor
+
+- Added resource monitor module.
+- Dashboard displays live resource snapshot.
+- Added unit test.
