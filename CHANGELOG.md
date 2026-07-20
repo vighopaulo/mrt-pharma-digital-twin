@@ -347,3 +347,18 @@ after adapting the attribute names if the engine does not use
 - Added resource monitor module.
 - Dashboard displays live resource snapshot.
 - Added unit test.
+
+## Build 45: Interactive Simulation Controls
+
+- Added start, pause and reset controls.
+- Added dashboard integration.
+- Added unit tests.
+
+
+## Build 46: Simulation Speed Control
+
+- Added simulation speed control module.
+- Integrated dashboard status reporting.
+- Added unit tests.
+
+
