@@ -1,4 +1,6 @@
-from .speed_control import SpeedControl
+from .step_control import StepControl
+
 
 def render_dashboard():
-    s=SpeedControl();print(s.status())
+    controller = StepControl()
+    print(controller.status())

@@ -368,3 +368,10 @@ after adapting the attribute names if the engine does not use
 - Integrated dashboard status reporting.
 - Added unit tests.
 
+
+## Build 48: Single-Event Step Control
+
+- Added a single-event simulation step controller.
+- Added optional callback execution for one-step processing.
+- Added processed-step and last-result status reporting.
+- Added unit tests for stepping, callback results, and reset behavior.
