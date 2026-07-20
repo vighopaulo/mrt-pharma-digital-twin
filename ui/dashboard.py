@@ -1,6 +1,5 @@
-from .step_control import StepControl
-
+from ui.event_history import EventHistory
 
 def render_dashboard():
-    controller = StepControl()
-    print(controller.status())
+    history=EventHistory()
+    print(history.status())

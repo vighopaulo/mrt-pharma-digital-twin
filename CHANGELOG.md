@@ -375,3 +375,11 @@ after adapting the attribute names if the engine does not use
 - Added optional callback execution for one-step processing.
 - Added processed-step and last-result status reporting.
 - Added unit tests for stepping, callback results, and reset behavior.
+
+
+
+## Build 49: Event History Monitor
+
+- Added event history monitor.
+- Added bounded event recording.
+- Added unit tests.
