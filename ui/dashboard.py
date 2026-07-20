@@ -1,5 +1,5 @@
-from ui.metrics_recorder import MetricsRecorder
+from ui.throughput_monitor import ThroughputMonitor
 
 def render_dashboard():
-    recorder=MetricsRecorder()
-    print(recorder.status())
+    monitor = ThroughputMonitor()
+    print(monitor.status())

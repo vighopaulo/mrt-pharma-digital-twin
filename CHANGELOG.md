@@ -391,3 +391,10 @@ after adapting the attribute names if the engine does not use
 - Added simulation metrics recorder.
 - Added metric sampling and retrieval.
 - Added unit tests.
+
+## Build 51: Live Throughput Monitor
+
+- Added live throughput monitor.
+- Added throughput rate calculations.
+- Added unit tests.
+
