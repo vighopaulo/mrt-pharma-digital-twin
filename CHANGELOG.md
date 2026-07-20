@@ -1,3 +1,5 @@
+
+
 # Build 23.0 – Stochastic Duration Distributions
 
 ## Added
@@ -382,4 +384,10 @@ after adapting the attribute names if the engine does not use
 
 - Added event history monitor.
 - Added bounded event recording.
+- Added unit tests.
+
+## Build 50: Simulation Metrics Recorder
+
+- Added simulation metrics recorder.
+- Added metric sampling and retrieval.
 - Added unit tests.

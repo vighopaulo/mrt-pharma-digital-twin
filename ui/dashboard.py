@@ -1,5 +1,5 @@
-from ui.event_history import EventHistory
+from ui.metrics_recorder import MetricsRecorder
 
 def render_dashboard():
-    history=EventHistory()
-    print(history.status())
+    recorder=MetricsRecorder()
+    print(recorder.status())
