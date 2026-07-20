@@ -362,3 +362,9 @@ after adapting the attribute names if the engine does not use
 - Added unit tests.
 
 
+## Build 47: Simulation Time Control
+
+- Added simulation time control module.
+- Integrated dashboard status reporting.
+- Added unit tests.
+
