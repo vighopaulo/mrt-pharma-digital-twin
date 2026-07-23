@@ -398,3 +398,13 @@ after adapting the attribute names if the engine does not use
 - Added throughput rate calculations.
 - Added unit tests.
 
+## Build 62 — Evidence Model
+
+- Added immutable and traceable evidence records.
+- Added evidence-source classification for internal and external sources.
+- Added evidence collection with duplicate protection, lookup, filtering, removal, and snapshots.
+- Added normalized confidence scoring and confidence levels.
+- Integrated evidence-grounded confidence into ProjectSignature.
+- Added intelligence-layer tests.
+
+
