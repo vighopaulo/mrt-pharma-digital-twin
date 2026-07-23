@@ -408,3 +408,16 @@ after adapting the attribute names if the engine does not use
 - Added intelligence-layer tests.
 
 
+
+## Build 63 — Signature Discovery Engine
+
+- Added a normalized DiscoveryContext for project data and provenance.
+- Added deterministic discovery across all eight project-signature sections.
+- Added alias handling for resource, economic, and operational-metric inputs.
+- Added automatic Evidence creation for every discovered project field.
+- Preserved zero and False as valid greenfield-project inputs.
+- Added explicit missing-section reporting, observations, warnings, and
+  completeness status.
+- Added tests for discovery, evidence generation, aliases, unknown sections,
+  invalid sections, collisions, greenfield values, and completeness.
+
