@@ -1,5 +1,6 @@
 
 
+
 # Build 23.0 – Stochastic Duration Distributions
 
 ## Added
@@ -420,4 +421,17 @@ after adapting the attribute names if the engine does not use
   completeness status.
 - Added tests for discovery, evidence generation, aliases, unknown sections,
   invalid sections, collisions, greenfield values, and completeness.
+
+
+## Build 64 — Similarity Engine
+
+- Added weighted, explainable comparison of ProjectSignature objects.
+- Added eight section-specific comparators covering spatial, workflow,
+  resources, equipment, transport, radiation, economics, and metrics.
+- Added numeric, categorical, boolean, mapping, and sequence similarity.
+- Added configurable section weights with validation.
+- Added missing-field reporting and field-level explanations.
+- Added candidate ranking from most to least similar.
+- Added tests for exact matches, scaled numerical differences, weighting,
+  missing fields, ranking, sequences, and invalid configurations.
 
