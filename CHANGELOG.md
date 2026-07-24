@@ -446,3 +446,13 @@ after adapting the attribute names if the engine does not use
 - Added portable JSON benchmark-library import and export.
 - Added unit tests covering storage, filtering, ranking, links, and serialization.
 
+
+
+## Build 66 — Benchmark Profile Builder
+
+- Added display-ready benchmark profiles built from ranked Build 65 results.
+- Added image, profile, source, map, publication, and custom link support.
+- Added traceable source cards with publisher, date, reference, and verification status.
+- Added profile summaries, similarity explanations, section scores, highlights, differences, metrics, and metadata.
+- Added JSON-safe profile payloads and profile JSON export for future result-display interfaces.
+- Added tests for profile assembly, images, links, deduplication, metrics, sources, serialization, and validation.
