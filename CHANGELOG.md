@@ -456,3 +456,16 @@ after adapting the attribute names if the engine does not use
 - Added profile summaries, similarity explanations, section scores, highlights, differences, metrics, and metadata.
 - Added JSON-safe profile payloads and profile JSON export for future result-display interfaces.
 - Added tests for profile assembly, images, links, deduplication, metrics, sources, serialization, and validation.
+
+## Build 67 — Recommendation Engine
+
+- Added evidence-backed engineering recommendation models.
+- Added recommendation categories and critical-to-informational priorities.
+- Added confidence, impact, difficulty, cost, timing, action-score, source,
+  benchmark, evidence, and metadata fields.
+- Added throughput, equipment, staffing, transport, radiation, and economic
+  recommenders.
+- Added benchmark-median gap analysis and similarity-weighted confidence.
+- Added ranked recommendation generation with confidence thresholds and limits.
+- Added tests for generation, ranking, filters, validation, and no-gap behavior.
+
