@@ -436,4 +436,13 @@ after adapting the attribute names if the engine does not use
   missing fields, ranking, sequences, and invalid configurations.
 
 
+## Build 65 — Benchmark Retrieval Engine
+
+- Added traceable benchmark project records.
+- Added country, facility-type, project-type, verification, threshold, and limit filters.
+- Added similarity-based retrieval and ranking using Build 64.
+- Added result display-link support through `profile_url` and `display_url`.
+- Added optional image and source URL fields for later profile enrichment.
+- Added portable JSON benchmark-library import and export.
+- Added unit tests covering storage, filtering, ranking, links, and serialization.
 
